@@ -20,3 +20,12 @@
     border: 1px solid black;
   }
 }
+.true {
+  background-color: #4c8bf5;
+  color: white;
+  &:hover {
+    background-color: white;
+    color: #4c8bf5;
+    border: 1px solid #4c8bf5;
+  }
+}

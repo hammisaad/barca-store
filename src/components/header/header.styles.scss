@@ -1,25 +1,26 @@
 .header {
-  display: flex;
-  justify-content: space-between;
   height: 70px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 25px;
 
-  .logo {
+  .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px 25px 25px 0px;
+    padding: 25px;
   }
 
   .options {
     width: 50%;
     height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
 
     .option {
-      padding: 25px 25px 0px 25px;
+      padding: 10px 15px;
+      cursor: pointer;
     }
   }
 }
