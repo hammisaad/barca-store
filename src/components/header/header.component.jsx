@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import { setCurrentUser } from "../../redux/user/user-actions";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-
 import "./header.styles.scss";
 
 class Header extends React.Component {
   render() {
+    const { currentUser, isHidden, toggleCart } = this.props;
     return (
       <div className="header">
         <Link className="logo-container" to="/">
@@ -22,7 +24,7 @@ class Header extends React.Component {
           <Link className="option" to="/shop">
             CONTACT
           </Link>
-          {this.props.currentUser ? (
+          {currentUser ? (
             <Link
               to="/"
               className="option"
@@ -30,7 +32,7 @@ class Header extends React.Component {
                 auth
                   .signOut()
                   .then(() => {
-                    this.props.setCurrentUser(null);
+                    this.props.history.push("/shop");
                     console.log("signed out");
                   })
                   .catch((error) => {
@@ -45,17 +47,21 @@ class Header extends React.Component {
               SIGN IN
             </Link>
           )}
+
+          <CartIcon onClick={toggleCart} />
+          {isHidden ? null : <CartDropdown />}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { isHidden } }) => ({
+  currentUser,
+  isHidden,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
