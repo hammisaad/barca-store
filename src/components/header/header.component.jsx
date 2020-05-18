@@ -3,6 +3,9 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import { setCurrentUser } from "../../redux/user/user-actions";
+import { createStructuredSelector } from "reselect";
+import { selectCartHidden } from "../../redux/cart/cart-selectors";
+import { selectCurrentUser } from "../../redux/user/user-selector";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
@@ -56,9 +59,9 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user: { currentUser }, cart: { isHidden } }) => ({
-  currentUser,
-  isHidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  isHidden: selectCartHidden,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),

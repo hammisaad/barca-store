@@ -11,7 +11,7 @@ class Shop extends Component {
     return (
       <div>
         {this.state.SHOP_DATA.map(({ id, ...otherCollectionProps }) => (
-          <CollectionPreview id={id} {...otherCollectionProps} />
+          <CollectionPreview key={id} {...otherCollectionProps} />
         ))}
       </div>
     );
