@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user-selector";
@@ -45,23 +45,17 @@ class App extends Component {
     const { currentUser } = this.props;
     return (
       <div>
-        <BrowserRouter>
-          <div>
-            <Header />
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/shop" exact component={Shop} />
-              <Route
-                exact
-                path="/signup"
-                render={() =>
-                  currentUser ? <Redirect to="/" /> : <SignInUp />
-                }
-              />
-              <Route path="/checkout" exact component={CheckoutPage} />
-            </Switch>
-          </div>
-        </BrowserRouter>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/shop" exact component={Shop} />
+          <Route
+            exact
+            path="/signup"
+            render={() => (currentUser ? <Redirect to="/" /> : <SignInUp />)}
+          />
+          <Route path="/checkout" exact component={CheckoutPage} />
+        </Switch>
       </div>
     );
   }

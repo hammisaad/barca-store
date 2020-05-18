@@ -12,15 +12,15 @@ const CheckoutPage = ({ cartItems, total }) => {
   return (
     <div className="checkout-page">
       <div className="header">
-        <div className="header-block">Name</div>
+        <div className="header-block">Product</div>
         <div className="header-block">Description</div>
-        <div className="header-block">price</div>
-        <div className="header-block">quantity</div>
+        <div className="header-block">Quantity</div>
+        <div className="header-block">Price</div>
         <div className="header-block">Remove</div>
       </div>
       <div className="cart-items">
-        {cartItems.map(({ id, ...otherItemProps }) => (
-          <CheckoutItem key={id} {...otherItemProps} />
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </div>
       <div className="total">${total}</div>
