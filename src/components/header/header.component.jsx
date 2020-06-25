@@ -35,8 +35,8 @@ class Header extends React.Component {
                 auth
                   .signOut()
                   .then(() => {
-                    this.props.history.push("/shop");
-                    console.log("signed out");
+                    this.props.selectCurrentUser(null);
+                    this.props.history.push("/");
                   })
                   .catch((error) => {
                     // An error happened.

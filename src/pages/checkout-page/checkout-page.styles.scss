@@ -4,19 +4,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 0;
+  margin: 50px auto 10px auto;
 
   .header {
     width: 100%;
-    padding: 10px 0;
     display: flex;
     justify-content: space-between;
+    padding: 5px 0px;
     border-bottom: 1px solid darkgrey;
+    height: 30px;
+    margin: 0;
 
     .header-block {
       text-transform: capitalize;
       width: 23%;
-
+      height: fit-content;
       &:last-child {
         width: 8%;
       }
@@ -24,8 +26,20 @@
   }
 
   .total {
+    width: fit-content;
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+  }
+  .stripe {
+    margin-left: auto;
+    margin-top: 2%;
+  }
+  .cart-items {
+    width: 100%;
+  }
+  .test-warning {
+    color: rgb(248, 67, 12);
+    margin-top: 10px;
   }
 }
