@@ -16,3 +16,12 @@ export const removeItemWithArrow = (item) => ({
   type: "REMOVE_ITEM_WITH_ARROW",
   payload: item,
 });
+
+export const clearCartSuccess = () => ({
+  type: "CLEAR_CART_SUCCESS",
+});
+
+export const clearCartFailure = (error) => ({
+  type: "CLEAR_CART_FAILURE",
+  payload: error,
+});

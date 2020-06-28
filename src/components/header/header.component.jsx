@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { auth } from "../../firebase/firebase.utils";
-import { setCurrentUser } from "../../redux/user/user-actions";
+
+import { signOutStart } from "../../redux/user/user-actions";
+
 import { createStructuredSelector } from "reselect";
 import { selectCartHidden } from "../../redux/cart/cart-selectors";
 import { selectCurrentUser } from "../../redux/user/user-selector";
@@ -14,7 +15,7 @@ import "./header.styles.scss";
 
 class Header extends React.Component {
   render() {
-    const { currentUser, isHidden, toggleCart } = this.props;
+    const { currentUser, isHidden, toggleCart, signOutStart } = this.props;
     return (
       <div className="header">
         <Link className="logo-container" to="/">
@@ -28,21 +29,7 @@ class Header extends React.Component {
             CONTACT
           </Link>
           {currentUser ? (
-            <Link
-              to="/"
-              className="option"
-              onClick={() =>
-                auth
-                  .signOut()
-                  .then(() => {
-                    this.props.selectCurrentUser(null);
-                    this.props.history.push("/");
-                  })
-                  .catch((error) => {
-                    // An error happened.
-                  })
-              }
-            >
+            <Link to="/" className="option" onClick={signOutStart}>
               SIGN OUT
             </Link>
           ) : (
@@ -59,12 +46,13 @@ class Header extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   isHidden: selectCartHidden,
-});
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
