@@ -46,13 +46,14 @@ export function* getSnapshotFromUserRef(userAuth, additionalData) {
       additionalData
     );
     const userSnapshot = yield userRef.get();
-    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot }));
+
+    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailure(error));
   }
 }
 
-export function* signInAfterSigUp({ payload: { user, additionalData } }) {
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserRef(user, additionalData);
 }
 
@@ -74,7 +75,7 @@ export function* signInEmail({ payload: { email, password } }) {
 }
 
 export function* onSignInAfterSignUp() {
-  yield takeLatest(userTypes.SIGN_UP_SUCCESS, signInAfterSigUp);
+  yield takeLatest(userTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
 export function* onGoogleSignInStart() {
@@ -86,9 +87,9 @@ export function* onEmailSignInStart() {
 }
 
 // user persistence logic
-export function* checkUserSession() {
+export function* isUserAuthenticated() {
   try {
-    const userAuth = getCurrentUser();
+    const userAuth = yield getCurrentUser();
     if (!userAuth) return;
     yield getSnapshotFromUserRef(userAuth);
   } catch (error) {
@@ -97,7 +98,7 @@ export function* checkUserSession() {
 }
 
 export function* onCheckUserSession() {
-  yield takeLatest(userTypes.CHECK_USER_SESSION, checkUserSession);
+  yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
 // sign out logic

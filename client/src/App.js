@@ -4,7 +4,6 @@ import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 
 import { selectCurrentUser } from "./redux/user/user-selector";
-import { selectCollectionsAsArray } from "./redux/shop/shop-selectors";
 import { checkUserSession } from "./redux/user/user-actions";
 
 import { HomePage } from "./pages/home-page/homepage.component";
@@ -43,7 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsAsArray,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
