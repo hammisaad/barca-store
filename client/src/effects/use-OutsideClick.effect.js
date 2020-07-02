@@ -15,7 +15,7 @@ function useOutsideClick(ref, dispatch) {
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, dispatch]);
 }
 
 export default useOutsideClick;
