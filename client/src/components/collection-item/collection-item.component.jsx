@@ -1,26 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { addItem } from "../../redux/cart/cart-actions";
 
 import "./collection-item.styles.scss";
-import CustomButton from "../custom-button/custom-button.component";
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item, addItem, collection }) => {
+  const history = useHistory();
   return (
-    <div className="collection-item">
+    <div className="collection__item">
       <div
-        className="image"
+        onClick={() => history.push(`/shop/${collection}/${item.id}`)}
+        className="collection__item__image"
         style={{
-          backgroundImage: `url(${item.imageUrl})`,
+          backgroundImage: `url(${item.imageUrl[0]})`,
         }}
       />
-      <div className="collection-footer">
-        <span className="name">{item.name}</span>
-        <span className="price">${item.price}</span>
+      <div className="collection__item__footer">
+        <span
+          onClick={() => history.push(`/shop/${collection}/${item.id}`)}
+          className="name"
+        >
+          {item.name}
+        </span>
+        <span className="price">
+          <p> €{item.price}</p>
+          <i onClick={() => addItem(item)} className="icofont-cart"></i>
+        </span>
       </div>
-      <CustomButton onClick={() => addItem(item)} inverted>
-        Add to cart
-      </CustomButton>
     </div>
   );
 };

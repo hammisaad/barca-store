@@ -1,11 +1,13 @@
+@import "../../styleGuide/main.scss";
+
 .cart-dropdown {
   position: absolute;
   width: 240px;
-  height: 340px;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid $yellow;
+  color: $dark;
   background-color: white;
   top: 90px;
   right: 40px;
@@ -17,6 +19,7 @@
     flex-direction: column;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin-bottom: 5px;
   }
 
   button {
@@ -25,5 +28,8 @@
   .empty-message {
     font-size: 20px;
     margin: 60px auto;
+  }
+  .empty-message {
+    height: auto;
   }
 }

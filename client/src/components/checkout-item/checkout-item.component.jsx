@@ -17,22 +17,25 @@ const CheckoutItem = ({
   const { name, quantity, price, imageUrl } = cartItem;
   return (
     <div className="checkout-item">
-      <div className="image-container">
-        <img src={imageUrl} alt="item" />
+      <img className="item__img" src={imageUrl} alt="item" />
+
+      <span className="item__name">{name}</span>
+      <div className="arrows">
+        <i
+          onClick={() => removeItemWithArrow(cartItem)}
+          className="icofont-minus-circle"
+        ></i>
+        <i
+          onClick={() => addItem(cartItem)}
+          className="icofont-plus-circle"
+        ></i>
       </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        <div className="arrow" onClick={() => removeItemWithArrow(cartItem)}>
-          &#10094;
-        </div>
-        <span className="value">{quantity}</span>
-        <div className="arrow" onClick={() => addItem(cartItem)}>
-          &#10095;
-        </div>
+      <span className="item__quantity">
+        <span className="value">{quantity} *</span>
       </span>
-      <span className="price">${price}</span>
+      <span className="item__price">${price}</span>
       <div className="remove-button" onClick={() => removeItem(cartItem)}>
-        &#10005;
+        <i className="icofont-ui-delete"></i>
       </div>
     </div>
   );

@@ -12,10 +12,6 @@ import {
 
 import ShopActionTypes from "./shopTypes";
 
-export function* onFetchCollectionsStart() {
-  yield takeLatest(ShopActionTypes.FETCH_COLLECTIONS_START, fetchCollections);
-}
-
 export function* fetchCollections() {
   try {
     const collectionRef = firestore.collection("collections");
@@ -28,4 +24,8 @@ export function* fetchCollections() {
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));
   }
+}
+
+export function* onFetchCollectionsStart() {
+  yield takeLatest(ShopActionTypes.FETCH_COLLECTIONS_START, fetchCollections);
 }

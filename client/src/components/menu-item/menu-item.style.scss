@@ -1,62 +1,105 @@
+@import "../../styleGuide/main.scss";
+
 .menu-item {
-  min-width: 30%;
-  height: 240px;
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 7.5px 15px;
+  height: 100vh;
   overflow: hidden;
+  margin-bottom: 30px;
+  position: relative;
+  object-fit: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  &:first-child {
-    margin-right: 7.5px;
-  }
-
-  &:last-child {
-    margin-left: 7.5px;
-  }
-
-  .background-img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  &.large {
-    height: 340px;
-  }
   .content {
-    height: 90px;
-    padding: 0 25px;
+    position: absolute;
+    height: auto;
+    max-width: 400px;
+    bottom: 100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-color: white;
-    opacity: 0.7;
-    position: absolute;
+    color: white;
+    padding: 0 20px;
 
     .title {
-      font-weight: bold;
-      margin-bottom: 6px;
-      font-size: 22px;
-      color: #4a4a4a;
+      font-size: 38px;
+      font-weight: 900;
+      padding: 0 7px;
+      color: white;
+      max-width: 600px;
+      background: linear-gradient(270deg, #cf122d 0%, #154282 100%);
     }
-
-    .subtitle {
-      font-weight: lighter;
-      font-size: 16px;
+    .tag {
+      padding: 0 7px;
+      margin-top: 15px;
+      font-size: 22px;
+      line-height: 38px;
+      background-color: $primary;
+      width: max-content;
+      max-width: 400px;
+    }
+    .custom-button {
+      width: max-content;
+      margin-top: 15px;
     }
   }
+
   &:hover {
     cursor: pointer;
     .content {
       opacity: 0.9;
     }
-    .background-img {
-      transform: scale(1.1);
-      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  }
+}
+.odd {
+  .content {
+    left: 80px;
+  }
+}
+.even {
+  .content {
+    right: 80px;
+  }
+}
+
+@media screen and (max-width: $regular) {
+  .menu-item {
+    height: 120vh;
+
+    .content {
+      bottom: 150px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      .title {
+        max-width: 350px;
+      }
+      .tag {
+        max-width: 350px;
+      }
+      .custom-button {
+        width: max-content;
+      }
     }
+
+    &:hover {
+      cursor: pointer;
+      .content {
+        opacity: 0.9;
+      }
+      .background-img {
+        transform: none;
+      }
+    }
+  }
+  .even {
+    background-position: left;
+  }
+  .odd {
+    background-position: right;
+  }
+  .woman {
+    background-position: center;
   }
 }

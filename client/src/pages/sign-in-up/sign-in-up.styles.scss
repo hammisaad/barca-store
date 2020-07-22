@@ -1,7 +1,40 @@
-.sign-in-up {
-  width: 900px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+@import "../../styleGuide/main.scss";
+
+.sign-in-up__page {
   margin: auto;
+  width: 80%;
+  height: auto;
+  margin-top: $navbar-height;
+  padding: 5%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .sign-in-up__title {
+    margin: 10px 0;
+    font-weight: 900;
+    font-size: 25px;
+    color: $primary;
+  }
+  .sign-in-up__description {
+    line-height: 20px;
+    font-size: 15px;
+  }
+
+  .sign-in-up__buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .custom-button {
+    width: max-content;
+    margin-right: 10px;
+    &:hover {
+      background: linear-gradient(to left, #cf122d, #154282);
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sign-in-up__page {
+    width: 100%;
+  }
 }

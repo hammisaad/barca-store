@@ -30,8 +30,11 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 
   return (
     <div className="sign-in">
-      <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
+      <h2 className="sign-in-up__title"> Returning Customer</h2>
+      <p className="sign-in-up__description ">
+        If you already have a Barça Camp Nou Store account, enter your data and
+        enjoy the blaugrana experience when you make your purchases.
+      </p>
       <form onSubmit={handleSubmit}>
         <FormInput
           name="email"
@@ -50,14 +53,14 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           required
         />
 
-        <div className="button-group">
-          <CustomButton type="submit">Sign In</CustomButton>
+        <div className="sign-in-up__buttons">
+          <CustomButton type="submit">Log In</CustomButton>
           <CustomButton
             type="button"
             onClick={googleSignInStart}
             isGoogleSignIn
           >
-            Sign In With Google
+            Log in With Google
           </CustomButton>
         </div>
       </form>

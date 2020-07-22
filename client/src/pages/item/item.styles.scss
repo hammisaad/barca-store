@@ -1,0 +1,115 @@
+@import "../../styleGuide/main.scss";
+
+.item__page {
+  margin: 0 auto;
+  margin-top: $navbar-height;
+  min-height: 85vh;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 50px;
+  max-width: 1000px;
+
+  .item__images__container {
+    width: 54%;
+    position: relative;
+
+    .item__images {
+      display: flex;
+      flex-wrap: wrap;
+      object-fit: contain;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      img {
+        width: 50%;
+      }
+    }
+  }
+
+  .item__details {
+    width: 42%;
+    color: $primary;
+
+    .item__customization {
+      margin: 0 0 40px 0;
+      .form-input {
+        margin: 5px 0;
+      }
+    }
+    .item__description {
+      strong {
+        display: block;
+        margin: 7px 0;
+      }
+      .barca__exclusive__product {
+        font-weight: 500;
+        margin: 2px 0 10px 0;
+      }
+      .description__text {
+        line-height: 25px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 650px) {
+  .item__page {
+    .item__images__container {
+      width: 300px;
+      height: 454px !important;
+      overflow-x: hidden;
+      position: relative;
+      .item__images {
+        overflow: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        object-fit: contain;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .item__details {
+      flex-grow: 1;
+      padding-left: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .item__page {
+    padding: 50px 5%;
+    flex-wrap: wrap;
+    .item__images__container {
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+      .item__images {
+        overflow: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        object-fit: contain;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .item__details {
+      width: 100%;
+      padding: 2%;
+      .item__title {
+        margin: 20px 0 0 0;
+      }
+    }
+  }
+}

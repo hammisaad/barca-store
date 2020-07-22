@@ -4,16 +4,18 @@ import { directorySectionsSelector } from "../../redux/directory/directory-selec
 import { connect } from "react-redux";
 
 import "./directory.style.scss";
-import { DirectoryMenu } from "./directory.styles";
+
 import MenuItem from "../menu-item/menu-item.component";
+import Discount from "../discount/discount.component";
 
 const Directory = ({ sections }) => {
   return (
-    <DirectoryMenu>
+    <div className="directory-menu">
+      <Discount />
       {sections.map(({ id, ...otherProps }) => (
-        <MenuItem key={id} {...otherProps} />
+        <MenuItem key={id} id={id} {...otherProps} />
       ))}
-    </DirectoryMenu>
+    </div>
   );
 };
 

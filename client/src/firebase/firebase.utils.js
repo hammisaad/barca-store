@@ -3,14 +3,14 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyDTesDZ-53fFh2IaLsy4U9loMGKZHn4ghE",
-  authDomain: "mystore-576c8.firebaseapp.com",
-  databaseURL: "https://mystore-576c8.firebaseio.com",
-  projectId: "mystore-576c8",
-  storageBucket: "mystore-576c8.appspot.com",
-  messagingSenderId: "175082425597",
-  appId: "1:175082425597:web:3bf5fde8882859b7610294",
-  measurementId: "G-77CP78NTCG",
+  apiKey: "AIzaSyAkPGIBIaiiX9sFKaRibLbhptwR4VgqR3o",
+  authDomain: "fcb-store.firebaseapp.com",
+  databaseURL: "https://fcb-store.firebaseio.com",
+  projectId: "fcb-store",
+  storageBucket: "fcb-store.appspot.com",
+  messagingSenderId: "602367767100",
+  appId: "1:602367767100:web:c5a3ad1ca27059a4b94939",
+  measurementId: "G-BE3R5Y8JTR",
 };
 
 firebase.initializeApp(config);

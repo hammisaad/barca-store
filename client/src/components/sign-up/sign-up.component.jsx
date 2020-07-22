@@ -31,8 +31,12 @@ const SignUp = ({ signUpStart }) => {
   };
   return (
     <div className="sign-up">
-      <h2 className="title">I do not have a account</h2>
-      <span>Sign up with your email and password</span>
+      <h2 className="sign-in-up__title">Register</h2>
+      <p className="sign-in-up__description">
+        Welcome to the Barça Camp Nou Store! Create your account in order to
+        have access to the latest official FC Barcelona products, make your
+        purchases faster, save your delivery information and track your orders.
+      </p>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
           type="text"

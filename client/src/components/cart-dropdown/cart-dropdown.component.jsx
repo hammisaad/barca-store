@@ -36,17 +36,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
           </CustomButton>
         </React.Fragment>
       ) : (
-        <React.Fragment>
-          <div className="empty-message">Your Cart is empty</div>
-          <CustomButton
-            onClick={() => {
-              history.push("/shop");
-              dispatch(toggleCart());
-            }}
-          >
-            Let's shop!
-          </CustomButton>
-        </React.Fragment>
+        <div className="empty-message">Your Cart is empty</div>
       )}
     </div>
   );

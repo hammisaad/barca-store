@@ -1,0 +1,64 @@
+@import "../../styleGuide/main.scss";
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: $primary;
+  padding: 50px 15%;
+  color: white;
+  .footer__div {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: column;
+    align-items: flex-start;
+    text-align: left;
+    .footer__div__title,
+    .footer__div__item,
+    .footer__div__item {
+      margin-bottom: 10px;
+    }
+    .footer__div__title {
+      font-weight: 800;
+    }
+    .footer__div__item {
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .footer__div__img {
+      width: 130px;
+      margin-top: 15px;
+    }
+    .footer__div__social {
+      list-style: none;
+      display: flex;
+      .social__icon {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+        margin-top: 7px;
+        margin-right: 7px;
+        font-size: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: $primary;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $regular) {
+  .footer {
+    .footer__div {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+  }
+}

@@ -5,48 +5,65 @@ import { connect } from "react-redux";
 
 import { selectCurrentUser } from "./redux/user/user-selector";
 import { checkUserSession } from "./redux/user/user-actions";
+import { fetchCollectionsStart } from "./redux/shop/shop-actions";
 
 import "./App.css";
 
 import Header from "./components/header/header.component";
+import Footer from "./components/footer/footer.component";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 
-const HomePage = lazy(() => import("./pages/home-page/homepage.component"));
-const Shop = lazy(() => import("./pages/shop-page/shop.component"));
-const SignInUp = lazy(() => import("./pages/sign-in-up/sign-in-up.component"));
+const HomePage = lazy(() => import("./pages/home/home.page"));
+const ItemPage = lazy(() => import("./pages/item/item.page"));
 
+const SignInUp = lazy(() => import("./pages/sign-in-up/sign-in-up.component"));
+const CollectionPageContainer = lazy(() =>
+  import("./pages/collection/collection.container")
+);
 const CheckoutPage = lazy(() =>
   import("./pages/checkout-page/checkout-page.component")
 );
 
-const App = ({ checkUserSession, currentUser }) => {
+const App = ({ checkUserSession, currentUser, fetchCollectionsStart }) => {
   useEffect(() => {
     checkUserSession();
-  }, [checkUserSession]);
+    fetchCollectionsStart();
+  }, [checkUserSession, fetchCollectionsStart]);
   return (
-    <div>
+    <div className="app">
       <Header />
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/shop" component={Shop} />
+            <Route exact path="/" component={HomePage} />
             <Route
               exact
               path="/signup"
               render={() => (currentUser ? <Redirect to="/" /> : <SignInUp />)}
             />
-            <Route path="/checkout" exact component={CheckoutPage} />
+            <Route exact path="/checkout" component={CheckoutPage} />
+            <Route
+              exact
+              path="/shop/:collectionId/:itemId"
+              component={ItemPage}
+            />
+            <Route
+              exact
+              path={`/shop/:collectionId`}
+              component={CollectionPageContainer}
+            />
           </Suspense>
         </ErrorBoundary>
       </Switch>
+      <Footer />
     </div>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
   checkUserSession: () => dispatch(checkUserSession()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 const mapStateToProps = createStructuredSelector({

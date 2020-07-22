@@ -1,12 +1,17 @@
+@import "../../styleGuide/main.scss";
+
 .checkout-page {
-  width: 55%;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: $navbar-height;
+  padding: 50px 20%;
+  height: auto;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 10px auto;
 
-  .header {
+  .checkout__header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -51,6 +56,15 @@
     h2 {
       color: gray;
       margin: 12% auto;
+    }
+  }
+}
+
+@media screen and (max-width: $regular) {
+  .checkout-page {
+    padding: 50px 15px;
+    .checkout__header {
+      display: none;
     }
   }
 }

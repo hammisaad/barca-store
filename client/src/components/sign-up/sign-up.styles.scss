@@ -1,9 +1,14 @@
+@import "../../styleGuide/main.scss";
+
 .sign-up {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 45%;
+}
 
-  .title {
-    margin: 10px 0;
+@media screen and (max-width: $regular) {
+  .sign-up {
+    width: 95%;
+    margin: 45px auto;
   }
 }

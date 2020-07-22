@@ -1,34 +1,71 @@
+@import "../../styleGuide/main.scss";
+
 .checkout-item {
   min-width: 100%;
   display: flex;
-  min-height: 100px;
+  justify-content: space-between;
+  height: 100px;
   border-bottom: 1px solid darkgrey;
   padding: 10px 0;
-  font-size: 20px;
+  margin-bottom: 15px;
   align-items: center;
+  overflow: hidden;
 
-  .image-container {
-    width: 23%;
+  .item__name {
+    flex-grow: 1;
+  }
+  .item__quantity,
+  .arrows,
+  .item__price,
+  .remove-button {
+    width: 10%;
+  }
+  .item__img {
     padding-right: 15px;
-
-    img {
-      width: 60%;
-      height: 60%;
-    }
-  }
-  .name,
-  .quantity,
-  .price {
-    width: 23%;
-  }
-
-  .quantity {
-    display: flex;
+    height: 96px;
+    width: 20%;
+    object-fit: contain;
+    overflow: hidden;
   }
 
   .remove-button,
-  .arrow {
-    cursor: pointer;
-    margin: 0 10px;
+  .arrows {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    height: 80%;
+
+    i {
+      color: $secondary;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+  }
+}
+
+@media screen and (max-width: $regular) {
+  .checkout-item {
+    padding: 10px 0;
+    margin-bottom: 15px;
+
+    .item__img {
+      padding-right: 15px;
+      height: 96px;
+      object-fit: contain;
+      overflow: hidden;
+    }
+
+    .item__quantity {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .remove-button,
+    .arrow {
+      cursor: pointer;
+      margin: 0 10px;
+    }
   }
 }

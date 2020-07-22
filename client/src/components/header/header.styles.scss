@@ -1,26 +1,199 @@
+@import "../../styleGuide/main.scss";
+
 .header {
-  height: 70px;
+  height: $navbar-height;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  background-color: $primary;
 
   .logo-container {
     height: 100%;
-    width: 70px;
-    padding: 25px;
+    width: 250px;
+    padding: 18px 7px;
+    display: flex;
+    .logo {
+      width: 100%;
+      height: 100%;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 
-  .options {
-    width: 50%;
-    height: 100%;
+  .header__options {
+    width: auto;
+    flex-grow: 1;
+    height: $navbar-height;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    .option {
-      padding: 10px 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    a {
       cursor: pointer;
+    }
+    ul {
+      width: max-content;
+      margin-right: 7%;
+      margin-left: auto;
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .header__options__up {
+      background-color: $dark;
+      padding: 0px 0px;
+      height: 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      ul {
+        li {
+          .option {
+            font-weight: 600;
+            line-height: 1.33;
+            font-size: 12px;
+            padding: 12px 0;
+            text-transform: capitalize;
+            cursor: pointer;
+            text-align: center;
+          }
+          i {
+            padding: 4px;
+            color: white;
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+    .header__options__low {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 60%;
+      ul {
+        width: 80%;
+        margin-right: 30px;
+        .option {
+          font-size: 14px;
+          line-height: 1.25;
+          font-size: 800;
+          text-transform: uppercase;
+          margin-left: 30px;
+        }
+        .active {
+          color: $yellow;
+        }
+      }
+      .burger {
+        display: none;
+      }
+      .burger-close {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $regular) {
+  .header {
+    .logo-container {
+      width: 40%;
+    }
+
+    .header__options {
+      width: 60%;
+      .header__options__low {
+        ul {
+          position: absolute;
+          right: -70vw;
+          top: 0;
+          height: 100vh;
+          width: 70vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          background-color: $primary;
+          opacity: 0;
+          transition: all 0.3s ease-in;
+          margin: 0;
+          li {
+            margin: 0;
+            margin-bottom: 44px;
+
+            .option {
+              font-size: 24px;
+              margin: 0;
+            }
+          }
+        }
+        .burger {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 40px;
+          margin: auto;
+          margin-right: 30px;
+          cursor: pointer;
+
+          .first,
+          .second,
+          .third {
+            width: 30px;
+            height: 3px;
+            background: #fff;
+            margin-bottom: 8px;
+          }
+          .first {
+            border-radius: 2px 2px 0 0;
+          }
+          .third {
+            border-radius: 0 0 2px 2px;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .open {
+        .burger-close {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          justify-content: center;
+          width: 40px;
+          position: absolute;
+          top: 50px;
+          right: 50px;
+          cursor: pointer;
+          z-index: 11;
+
+          .first,
+          .third {
+            width: 30px;
+            height: 3px;
+            background: #fff;
+            margin-bottom: 8px;
+          }
+          .first {
+            transform: rotate(45deg) translate(8px, 8px);
+          }
+          .third {
+            transform: rotate(-45deg) translate(-0px, 0px);
+          }
+        }
+
+        ul {
+          right: 0vw;
+          top: 0;
+          opacity: 1;
+          transition: all 0.3s ease-in;
+        }
+      }
     }
   }
 }

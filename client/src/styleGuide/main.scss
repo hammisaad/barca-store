@@ -1,0 +1,38 @@
+// Colors
+$primary: #181733;
+$secondary: #a7083a;
+$dark: #0a0927;
+$yellow: #fec52d;
+$link: #1890ff;
+
+$text-primary: #333;
+$text-secondary: #ffffff;
+$bg-primary: #ffffff;
+$bg-secondary: #333;
+
+// MediaQueries
+$X-large: 1600px;
+$large: 1200px;
+$regular: 800px;
+$medium: 600px;
+$small: 420px;
+$x-small: 330px;
+
+// others
+$navbar-height: 6rem;
+
+// Fonts
+$font-primary: Helvetica, Arial, sans-serif;
+
+// animation
+$transition-speed: 600ms;
+
+// resets
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}

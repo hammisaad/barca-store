@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import {
   selectCartItems,
@@ -14,18 +14,12 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 import StripeButton from "../../components/stripe-button/stripe-button.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
 
-const CheckoutPage = ({ cartItems, total, history }) => {
+const CheckoutPage = ({ cartItems, total }) => {
+  let history = useHistory();
   return (
     <div className="checkout-page">
       {cartItems.length ? (
         <React.Fragment>
-          <div className="header">
-            <div className="header-block">Product</div>
-            <div className="header-block">Description</div>
-            <div className="header-block">Quantity</div>
-            <div className="header-block">Price</div>
-            <div className="header-block">Remove</div>
-          </div>
           <div className="cart-items">
             {cartItems.map((cartItem) => (
               <CheckoutItem key={cartItem.id} cartItem={cartItem} />
@@ -44,8 +38,8 @@ const CheckoutPage = ({ cartItems, total, history }) => {
       ) : (
         <div className="empty-checkout-page">
           <h2>Oops! your cart is empty ! 0.o</h2>
-          <CustomButton onClick={() => history.push("/shop")}>
-            Let's Shop!
+          <CustomButton onClick={() => history.push("/")}>
+            go home!
           </CustomButton>
         </div>
       )}
@@ -58,4 +52,4 @@ const mapStatetoProps = createStructuredSelector({
   total: selectCartItemsTotal,
 });
 
-export default connect(mapStatetoProps)(withRouter(CheckoutPage));
+export default connect(mapStatetoProps)(CheckoutPage);
