@@ -17,7 +17,7 @@ const CheckoutItem = ({
   const { name, quantity, price, imageUrl } = cartItem;
   return (
     <div className="checkout-item">
-      <img className="item__img" src={imageUrl} alt="item" />
+      <img className="item__img" src={imageUrl[0]} alt="item" />
 
       <span className="item__name">{name}</span>
       <div className="arrows">

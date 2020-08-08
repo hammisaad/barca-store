@@ -16,6 +16,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isHidden: !state.isHidden,
       };
+    case cartTypes.OPEN_CART:
+      return {
+        ...state,
+        isHidden: false,
+      };
     case cartTypes.CLOSE_CART:
       return {
         ...state,

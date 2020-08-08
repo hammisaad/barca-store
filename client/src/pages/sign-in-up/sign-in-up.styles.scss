@@ -23,6 +23,7 @@
   .sign-in-up__buttons {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
   }
   .custom-button {
     width: max-content;
@@ -33,7 +34,7 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $regular) {
   .sign-in-up__page {
     width: 100%;
   }

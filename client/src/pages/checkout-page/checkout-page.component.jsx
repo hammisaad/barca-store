@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useHistory } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   selectCartItems,
@@ -17,33 +18,40 @@ import CustomButton from "../../components/custom-button/custom-button.component
 const CheckoutPage = ({ cartItems, total }) => {
   let history = useHistory();
   return (
-    <div className="checkout-page">
-      {cartItems.length ? (
-        <React.Fragment>
-          <div className="cart-items">
-            {cartItems.map((cartItem) => (
-              <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-            ))}
+    <AnimatePresence>
+      <motion.div
+        initial={{ y: 300, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -300, opacity: 0 }}
+        className="checkout-page"
+      >
+        {cartItems.length ? (
+          <React.Fragment>
+            <div className="cart-items">
+              {cartItems.map((cartItem) => (
+                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+              ))}
+            </div>
+            <div className="test-warning">
+              *Please use the following test credit card for payments*
+              <br />
+              4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
+            </div>
+            <div className="total">${total}</div>
+            <div className="stripe">
+              <StripeButton price={total}>pay with stripe</StripeButton>
+            </div>
+          </React.Fragment>
+        ) : (
+          <div className="empty-checkout-page">
+            <h2>Oops! your cart is empty ! 0.o</h2>
+            <CustomButton onClick={() => history.push("/")}>
+              go home!
+            </CustomButton>
           </div>
-          <div className="test-warning">
-            *Please use the following test credit card for payments*
-            <br />
-            4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
-          </div>
-          <div className="total">${total}</div>
-          <div className="stripe">
-            <StripeButton price={total}>pay with stripe</StripeButton>
-          </div>
-        </React.Fragment>
-      ) : (
-        <div className="empty-checkout-page">
-          <h2>Oops! your cart is empty ! 0.o</h2>
-          <CustomButton onClick={() => history.push("/")}>
-            go home!
-          </CustomButton>
-        </div>
-      )}
-    </div>
+        )}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

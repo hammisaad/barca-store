@@ -13,6 +13,14 @@ export const selectCollectionsAsArray = createSelector(
     collections ? Object.keys(collections).map((key) => collections[key]) : null
 );
 
+export const selectFeaturedItems = createSelector(
+  [selectCollectionsAsArray],
+  (collections) =>
+    collections
+      ? collections.map(({ title, items }) => ({ title, item: items[0] }))
+      : null
+);
+
 export const selectCollection = (collectionUrlParam) =>
   createSelector([selectCollections], (collections) =>
     collections ? collections[collectionUrlParam] : null
@@ -26,3 +34,13 @@ export const selectIsCollectionIsLoaded = createSelector(
   [selectShop],
   (shop) => !!shop.collections
 );
+
+export const selectCollectionItem = (itemId) =>
+  createSelector([selectCollectionsAsArray], (collections) =>
+    collections
+      ? collections
+          .map(({ items }) => items)
+          .flat([Infinity])
+          ?.find(({ id }) => id === Number(itemId))
+      : null
+  );

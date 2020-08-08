@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import MDSpinner from "react-md-spinner";
 
 import { signUpStart } from "../../redux/user/user-actions";
 
@@ -9,6 +10,7 @@ import CustomButton from "../custom-button/custom-button.component";
 import "./sign-up.styles.scss";
 
 const SignUp = ({ signUpStart }) => {
+  const [signing, setSigning] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
     email: "",
@@ -19,6 +21,7 @@ const SignUp = ({ signUpStart }) => {
   const { displayName, email, password, confirmPassword } = userCredentials;
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSigning(true);
     signUpStart(displayName, email, password, confirmPassword);
   };
 
@@ -71,6 +74,7 @@ const SignUp = ({ signUpStart }) => {
           required
         />
         <CustomButton type="submit">SIGN UP</CustomButton>
+        {signing && <MDSpinner />}
       </form>
     </div>
   );

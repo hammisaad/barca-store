@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import MDSpinner from "react-md-spinner";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -12,6 +13,7 @@ import {
 import "./sign-in.styles.scss";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+  const [signing, setSigning] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
@@ -21,6 +23,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSigning(true);
     emailSignInStart(email, password);
   };
   const handleChange = (e) => {
@@ -62,6 +65,7 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
           >
             Log in With Google
           </CustomButton>
+          {signing && <MDSpinner />}
         </div>
       </form>
     </div>

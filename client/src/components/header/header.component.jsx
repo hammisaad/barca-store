@@ -39,12 +39,12 @@ const Header = ({ currentUser, isHidden, toggleCart, signOutStart }) => {
           </ul>
         </div>
         <div className={`header__options__low  ${navOpen && "open"} `}>
-          <div onClick={() => setNavOpen(false)} className="burger-close">
-            <div className="first"></div>
-            <div className="second"></div>
-            <div className="third"></div>
-          </div>
           <ul>
+            <div onClick={() => setNavOpen(false)} className="burger-close">
+              <div className="first"></div>
+              <div className="second"></div>
+              <div className="third"></div>
+            </div>
             {navLinks.map(({ link, name }, index) => (
               <li key={index}>
                 <Link
@@ -74,7 +74,6 @@ const navLinks = [
   { link: "/shop/kits", name: "kits" },
   { link: "/shop/exclusives", name: "exclusives" },
   { link: "/shop/kits", name: "masks" },
-  { link: "/shop/exclusives", name: "accessories" },
   { link: "/shop/kits", name: "fashion" },
 ];
 

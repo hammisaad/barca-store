@@ -1,4 +1,4 @@
-	import { call, all, takeLatest, put } from "redux-saga/effects";
+import { call, all, takeLatest, put } from "redux-saga/effects";
 
 import userTypes from "./user.types";
 import {
@@ -49,7 +49,7 @@ export function* getSnapshotFromUserRef(userAuth, additionalData) {
 
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
-    yield put(signInFailure(error));
+    yield put(signInFailure(error.message));
   }
 }
 
@@ -62,7 +62,8 @@ export function* signInGoogle() {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserRef(user);
   } catch (error) {
-    yield put(signInFailure(error));
+    yield put(signInFailure(error.message));
+    return;
   }
 }
 export function* signInEmail({ payload: { email, password } }) {
@@ -70,7 +71,7 @@ export function* signInEmail({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserRef(user);
   } catch (error) {
-    yield put(signInFailure(error));
+    yield put(signInFailure(error.message));
   }
 }
 

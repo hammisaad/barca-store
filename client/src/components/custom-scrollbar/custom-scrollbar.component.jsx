@@ -27,7 +27,7 @@ const CustomScrollbar = ({ setActiveDiv, activeDiv, parentRef, sections }) => {
             width: `${100 / sections.length}%`,
           }}
           key={index}
-          className={`scrollbar__section ${index == activeDiv && "active"}`}
+          className={`scrollbar__section ${index === activeDiv && "active"}`}
           onClick={(e) => scroll(e, index)}
         ></div>
       ))}

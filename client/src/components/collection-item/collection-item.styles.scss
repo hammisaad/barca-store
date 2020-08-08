@@ -2,7 +2,7 @@
 
 .collection__item {
   height: 350px;
-  margin-bottom: 75px;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
 
   .collection__item__image {
     width: 100%;
-    height: 95%;
+    height: 90%;
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
@@ -26,7 +26,7 @@
   .collection__item__footer {
     padding: 0px 4px;
     width: 100%;
-    height: 5%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     color: $text-primary;
